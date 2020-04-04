@@ -116,6 +116,7 @@ static void init_once(void) {
   int fd = *urandom_fd_requested_bss_get();
   CRYPTO_STATIC_MUTEX_unlock_read(rand_lock_bss_get());
 
+#if 0
 #if defined(USE_SYS_getrandom)
   uint8_t dummy;
   long getrandom_ret =
@@ -141,6 +142,7 @@ static void init_once(void) {
     }
   }
 #endif  /* USE_SYS_getrandom */
+#endif
 
   if (fd == kUnset) {
     do {
